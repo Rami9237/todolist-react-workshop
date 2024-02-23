@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
 
+import Navbar from "./components/Navbar";
+import TodoList from "./components/TodoList";
+import { useState } from "react";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [todos, setTodos] = useState([]);
+  const [description, setDescription] = useState("");
+  const addTask = todo => setTodos([ ...todos, todo])
+  const deleteTask = id => setTodos([...todos.filter(todo => (todo.id !== id))])
+  const editTask = id => {
+    setTodos([...todos.map(todo => todo.id === id ? todo.isEditing = { ...todo, isEditing: !todo.isEditing } : { ...todo, isEditing: false })]);
+  }
+  const changeDescription = description => setDescription(description);
+  const commitEditTask = (id, newDescription) => {
+    setTodos([...todos.map(todo => todo.id === id ? { ...todo, isEditing: false, description: newDescription } : todo)])
+  }
+    return (
+    <div>
+      <Navbar></Navbar>
+      <div className="ctnr justify-center items-center flex">
+        <TodoList
+          todos={todos}
+          allowNewTaskCreation={true}
+          description={description}
+          deleteTask={deleteTask}
+          changeDescription={changeDescription}
+          commitEditTask={commitEditTask}
+          addTask={addTask}
+          editTask={editTask} />
+      </div>
     </div>
   );
 }
