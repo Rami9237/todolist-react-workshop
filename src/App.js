@@ -1,33 +1,23 @@
-
+import Home from "./views/Home";
 import Navbar from "./components/Navbar";
-import TodoList from "./components/TodoList";
-import { useState } from "react";
+import { RouterProvider, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import CompletedTodos from "./views/CompletedTodos";
+import { getTodos } from "./services/TodosService";
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [description, setDescription] = useState("");
-  const addTask = todo => setTodos([ ...todos, todo])
-  const deleteTask = id => setTodos([...todos.filter(todo => (todo.id !== id))])
-  const editTask = id => {
-    setTodos([...todos.map(todo => todo.id === id ? todo.isEditing = { ...todo, isEditing: !todo.isEditing } : { ...todo, isEditing: false })]);
-  }
-  const changeDescription = description => setDescription(description);
-  const commitEditTask = (id, newDescription) => {
-    setTodos([...todos.map(todo => todo.id === id ? { ...todo, isEditing: false, description: newDescription } : todo)])
-  }
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    
+      <Route element={<Navbar />}>
+      <Route path="/" element={<Home />} loader={() => getTodos(0)} />
+      <Route path="/completed" element={<CompletedTodos/>}  loader={() => getTodos(1)}/>
+      </Route>
+  )
+)
     return (
     <div>
-      <Navbar></Navbar>
-      <div className="ctnr justify-center items-center flex">
-        <TodoList
-          todos={todos}
-          allowNewTaskCreation={true}
-          description={description}
-          deleteTask={deleteTask}
-          changeDescription={changeDescription}
-          commitEditTask={commitEditTask}
-          addTask={addTask}
-          editTask={editTask} />
-      </div>
+       
+        <RouterProvider router={router} />
+
     </div>
   );
 }
