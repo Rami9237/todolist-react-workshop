@@ -8,8 +8,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     
       <Route element={<Navbar />}>
-      <Route path="/" element={<Home />} loader={() => getTodos(0)} />
-      <Route path="/completed" element={<CompletedTodos/>}  loader={() => getTodos(1)}/>
+      <Route path="/" element={<Home />} loader={() => getTodos(false)} />
+      <Route path="/completed" element={<CompletedTodos/>}  loader={() => getTodos(true)}/>
       </Route>
   )
 )

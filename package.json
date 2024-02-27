@@ -20,7 +20,8 @@
   },
   "scripts": {
     "start-server": "npx json-server src/data/db.json -p 3030",
-    "start": "concurrently --kill-others \"react-scripts start\" \"npm run start-server\"",
+    "start-local": "concurrently --kill-others \"react-scripts start\" \"npm run start-server\"",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test-E2E": "npx playwright test E2E/tests",
