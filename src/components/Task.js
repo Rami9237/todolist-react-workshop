@@ -14,14 +14,14 @@ export default function Task({ todo, deleteTask, toggleEditing,editTask,complete
             </div>
             {!todo.isEditing ?
                 <div className="flex gap-3 ">
-                    <FontAwesomeIcon className="text-white cursor-pointer" icon={faCheck} onClick={() => completeTask({ ...todo, isCompleted: true })} />
-                    <FontAwesomeIcon className="text-white cursor-pointer" icon={faEdit} onClick={() => toggleEditing(todo.id)} />
-                    <FontAwesomeIcon className="text-white cursor-pointer" icon={faTrash} onClick={() => deleteTask(todo.id)} />
+                    <FontAwesomeIcon className="text-white cursor-pointer" icon={faCheck} onClick={() => completeTask({ ...todo, isCompleted: true })} data-testid="check-button"/>
+                    <FontAwesomeIcon className="text-white cursor-pointer" icon={faEdit} onClick={() => toggleEditing(todo.id)} data-testid="edit-button"/>
+                    <FontAwesomeIcon className="text-white cursor-pointer" icon={faTrash} onClick={() => deleteTask(todo.id)} data-testid="trash-button"/>
                 </div>
                 :
                 <div className="flex gap-3">
-                    <FontAwesomeIcon className="text-white cursor-pointer" icon={faSave} onClick={() => editTask({ ...todo,description: descriptionEditor })} />
-                    <FontAwesomeIcon className="text-white cursor-pointer" icon={faTimes} onClick={() => cancelChanges(todo.id)}/>
+                    <FontAwesomeIcon className="text-white cursor-pointer" icon={faSave} onClick={() => editTask({ ...todo,description: descriptionEditor })} data-testid="save-button"/>
+                    <FontAwesomeIcon className="text-white cursor-pointer" icon={faTimes} onClick={() => cancelChanges(todo.id)} />
                 </div>    
             }    
                 
