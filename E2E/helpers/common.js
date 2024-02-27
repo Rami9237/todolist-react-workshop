@@ -1,14 +1,23 @@
-const fs = require('fs');
+import axios from 'axios';
+export async function cleanLocalDB() {
+    try {
+        // Fetch all todos
+        const response = await axios.get(`http://localhost:3030/todos`);
+        const todos = response.data;
 
-export function cleanLocalDB() {
+        // Delete each todo
+        await Promise.all(todos.map(todo => deleteTodo(todo.id)));
 
-    const localDBpath = '../../src/data/db.json';
-    
-    fs.truncate(localDBpath, 0, (err) => {
-        if (err) {
-            console.error('Error truncating file:', err);
-        } else {
-            console.log('File content deleted successfully.');
-        }
-    });
+        console.log('Local database cleaned up successfully.');
+    } catch (error) {
+        console.error('Error cleaning local database:', error);
     }
+}
+
+async function deleteTodo(id) {
+    try {
+        await axios.delete(`http://localhost:3030/todos/${id}`);
+    } catch (error) {
+        console.error(`Error deleting todo with ID ${id}:`, error);
+    }
+}

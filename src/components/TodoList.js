@@ -28,7 +28,7 @@ export default function TodoList(props) {
             </div>
                       }       
             <h4 className="text-2xl mt-16 text-white">Todos</h4>
-            <div className="max-h-80 overflow-auto" data-testid='todo-items'>
+            <div className="max-h-80 overflow-auto" data-testid='list-items'>
             {props.todos && props.todos.length > 0 && 
                     props.todos.map(todo => <Task key={todo.id} todo={todo} deleteTask={props.deleteTask} toggleEditing={props.toggleEditing} editTask={props.editTask} completeTask={props.completeTask} />)
             }
