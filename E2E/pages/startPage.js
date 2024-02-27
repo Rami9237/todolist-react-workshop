@@ -13,19 +13,20 @@ class startPage {
         await this.page.click(MAIN_SELECTORS.ADD_BUTTON);
       }
     
-    async DeleteElement(elementIndex) {
-        await taskAction(page,elementIndex,TASK_ACTION.TRASH);
+    async deleteTask(elementIndex,) {
+        await taskAction(this.page,elementIndex,TASK_ACTION.TRASH);
       }
       
-    async SaveElement(elementIndex) {
-        await taskAction(page,elementIndex,TASK_ACTION.SAVE);
+    async checkTask(elementIndex) {
+        await taskAction(this.page,elementIndex,TASK_ACTION.CHECK);
 
       }
       
-     async ModifyElement(elementIndex, newItem) {
-        await taskAction(page,elementIndex,TASK_ACTION.EDIT);
+     async modifyTask(elementIndex, newItem) {
+        await taskAction(this.page,elementIndex,TASK_ACTION.EDIT);
         const taskLocator = await getTaskLocator(elementIndex);
         await this.page.fill(`${taskLocator}>div>input`, newItem);
+        await taskAction(this.page,elementIndex,TASK_ACTION.SAVE);
       }
 
 }
