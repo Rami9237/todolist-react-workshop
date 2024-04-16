@@ -6,7 +6,7 @@ export default function Task({ todo, deleteTask, toggleEditing,editTask,complete
     const [descriptionEditor, setDescriptionEditor] = useState(todo.description);
     const cancelChanges = id => { setDescriptionEditor(todo.description); toggleEditing(id)}
     return (
-        <div className="flex justify-between gap-10 bg-[#141834] p-3 mt-2 rounded-md items-center">
+        <div className="flex justify-between gap-10 bg-task p-3 mt-2 rounded-md items-center">
             <div>
                 {!todo.isEditing ?
                     <p className="font-bold text-white break-all">{todo.description}</p> :

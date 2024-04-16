@@ -29,7 +29,7 @@ export default function Home() {
 
   }
     return (
-        <div className="ctnr justify-center items-center flex">
+        <div className="ctnr justify-center items-center flex bg-primary">
           <TodoList
             todos={todos}
             isCompletedRoute={false}

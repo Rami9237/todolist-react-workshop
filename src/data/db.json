@@ -16,6 +16,12 @@
       "id": "cfec348c-f8b5-470c-b32f-0ab1a2039b2b",
       "description": "dqsdqs",
       "isEditing": false,
+      "isCompleted": true
+    },
+    {
+      "id": "250954c6-4a49-428a-a17d-41a66e9a8cbb",
+      "description": "whats up",
+      "isEditing": false,
       "isCompleted": false
     }
   ]
