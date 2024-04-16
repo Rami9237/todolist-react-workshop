@@ -1,7 +1,7 @@
 import { TASK_SELECTOR } from "../Object-repository/selectors/taskSelector";
 import { TASK_ACTION } from "../enum/taskAction";
 export function getTaskLocator(index) {
-    return `[data-testid='list-items']>div:nth-child(${index})`;
+    return `[data-testid='list-items']+div>div:nth-child(${index})`;
 }
 
 export async function taskAction(page, index, action) {

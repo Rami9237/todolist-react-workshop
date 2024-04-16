@@ -2,7 +2,6 @@ import { faCheck, faEdit, faSave, faTimes, faTrash } from "@fortawesome/free-sol
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react";
 export default function Task({ todo, deleteTask, toggleEditing,editTask,completeTask }) {
-    // Could  be improved...
     const [descriptionEditor, setDescriptionEditor] = useState(todo.description);
     const cancelChanges = id => { setDescriptionEditor(todo.description); toggleEditing(id)}
     return (
