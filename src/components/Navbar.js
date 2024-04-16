@@ -19,10 +19,10 @@ export default function Navbar() {
             <div className="hidden w-full md:block md:w-auto" id="navbar-default">
               <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-navbar dark:border-gray-700">
                 <li>
-                  <Link to="/" className={(homeMatch ? 'text-blue-500 ' : 'text-data') + " block py-2 px-3 bg-blue-700 rounded md:bg-transparent"} aria-current="page">Home</Link>
+                <Link to="/" className={(homeMatch ? 'text-blue-500 ' : 'text-data') + " block py-2 px-3 bg-blue-700 rounded md:bg-transparent"} aria-current="page" data-testid="home-link">Home</Link>
                 </li>
                 <li>
-                  <Link to="/completed" className={(completedTodosMatch ? 'text-blue-500 ' : 'text-data') + " block py-2 px-3 bg-blue-700 rounded md:bg-transparent"}>Completed</Link>
+                <Link to="/completed" className={(completedTodosMatch ? 'text-blue-500 ' : 'text-data') + " block py-2 px-3 bg-blue-700 rounded md:bg-transparent"} data-testid="completed-link">Completed</Link>
                 </li>
 
               </ul>

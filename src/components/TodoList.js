@@ -17,16 +17,17 @@ export default function TodoList(props) {
                         onChange={event => { props.changeDescription(event.target.value) }}
                         type="text"
                         value={props.description}
-                        placeholder="What do you have planned?" />
+                        placeholder="What do you have planned?" 
+                        data-testid="main-input"/>
                 </div>
                
                 <div>
-                    <FontAwesomeIcon className="text-4xl text-task cursor-pointer" icon={faCirclePlus} onClick={() => addTask(props.description)} />
+                    <FontAwesomeIcon className="text-4xl text-task cursor-pointer" icon={faCirclePlus} onClick={() => addTask(props.description)} data-testid="main-add"/>
                 </div>
 
             </div>
                       }       
-            <h4 className="text-2xl mt-16 text-data">Todos</h4>
+            <h4 className="text-2xl mt-16 text-data" data-testid='list-items'>Todos</h4>
             <div className="max-h-80 overflow-auto">
             {props.todos && props.todos.length > 0 && 
                     props.todos.map(todo => <Task key={todo.id} todo={todo} deleteTask={props.deleteTask} toggleEditing={props.toggleEditing} editTask={props.editTask} completeTask={props.completeTask} />)
