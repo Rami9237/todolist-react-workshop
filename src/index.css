@@ -1,6 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-data: 0 0 0;
+    --color-navbar: 214 214 220;
+    --color-primary: 241 241 239;
+    --color-secondary: 214 214 220;
+    --color-task: 131 131 149;
+  }
+
+  :root[isdarkmode] {
+    --color-data: 255 255 255;
+    --color-navbar: 10 8 32;
+    --color-primary: 28 32 52;
+    --color-secondary: 47 47 77;
+    --color-task: 20 24 52;
+  }
+}
+
+* {
+  @apply transition-colors duration-300;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -14,7 +37,6 @@ justify-content: center;
   box-sizing: border-box;
 }
 .ctnr {
-  background-color: #1c2034;
   min-height: 100vh;
   padding: 0;
   margin: 0;
